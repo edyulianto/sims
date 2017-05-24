@@ -39,14 +39,13 @@ class Authenticate
     {
         if ($this->auth->guard($guard)->guest()) {
             $token = $request->header('api-token');
-            // dd($token);
-            if(isset($token)){                                
+            if(isset($token)){
                 $check_token = User::where('api_token',$token)->first();
                 if($check_token==null){
-                    return response(array('status'=>'warning','message'=>'login failed'));
+                    return response(array('status'=>'Warning','message'=>'login failed'));
                 }
             }else{
-                return response(array('status'=>'warning','message'=>'login failed'));
+                return response(array('status'=>'Warning','message'=>'login failed'));
             }
         }
         return $next($request);

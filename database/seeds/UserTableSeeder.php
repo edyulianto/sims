@@ -19,7 +19,7 @@ class UserTableSeeder extends Seeder
         	'username'=>'edi.y',
 			'nis'=>'NIS0001',
 			'password'=> $hasher->make('bismillah'),
-			'api_token'=> $api_token
+			'api_token'=> '92b3dc9cda3545b89ff557b6b4af95fa2f3470c4'
         ]);
     }
 }

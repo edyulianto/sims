@@ -27,7 +27,7 @@ $app->group(['middleware' => 'auth','prefix' => 'user'], function($app)
 	$app->get('/{id}',['middleware' => 'auth','uses'=>'UserController@get']);
 });
 
-$app->group(['prefix' => 'student'], function($app)
+$app->group(['middleware' => 'auth','prefix' => 'student'], function($app)
 {
 	$app->get('','StudentController@index');
 	
@@ -41,7 +41,7 @@ $app->group(['prefix' => 'student'], function($app)
 	
 });
 
-$app->group(['prefix' => 'school'], function($app)
+$app->group(['middleware' => 'auth','prefix' => 'school'], function($app)
 {
 	$app->get('','SchoolController@index');
 
@@ -56,7 +56,7 @@ $app->group(['prefix' => 'school'], function($app)
 });
 
 
-$app->group(['prefix' => 'payment'], function($app)
+$app->group(['middleware' => 'auth','prefix' => 'payment'], function($app)
 {
 	$app->get('','PaymentController@index');
 	

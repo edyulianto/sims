@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Student;
+use App\School;
 
 class StudentController extends Controller
 {
@@ -46,7 +47,8 @@ class StudentController extends Controller
     }
 
     public function get(Request $request,$id){
-    	$student = Student::where('id',$id)->get();
+    	$student = Student::with('school')->find($id);
+        
         if($student){
             return response()->json($this->notif(array('status'=>'success','data'=>$student)));
         }else{

@@ -6,5 +6,9 @@ class School extends Model
 { 
 	protected $table = 'school';
 
- 	protected $fillable = ['nis','name','address','school_id'];	 
+ 	protected $fillable = ['school_id','name','address'];	 
+
+ 	public function student(){
+ 		return $this->hasMany('App\Student');
+ 	}
 }
