@@ -31,29 +31,31 @@ The Lumen framework is open-sourced software licensed under the [MIT license](ht
 3. Open Application Api for testing Rest API (ex Postman)
 4. Test REST API
 	- Login
-	  http://localhost:8000/login
-	  http://localhost:8000/logout	
+	  [POST] http://localhost:8000/login
+	  [Data] ex {'username':'edi.y','password':'bismillah'}
 
-	- User
-	  http://localhost:8000/user/1
-	  http://localhost:8000/user/save
-	  http://localhost:8000/user/delete/1
-	  http://localhost:8000/user/update/1
+	  [GET] http://localhost:8000/logout	
 
-	- School
-	  http://localhost:8000/school/1
-	  http://localhost:8000/school/save
-	  http://localhost:8000/school/delete/1
-	  http://localhost:8000/school/update/1
+	- User ex (header -> api-token : 92b3dc9cda3545b89ff557b6b4af95fa2f3470c4)
+	  [GET] http://localhost:8000/user/1	  
+	  [POST] http://localhost:8000/user/save
+	  [GET] http://localhost:8000/user/delete/1
+	  [POST] http://localhost:8000/user/update/1
 
-	- Student
-	  http://localhost:8000/student/1
-	  http://localhost:8000/student/save
-	  http://localhost:8000/student/delete/1
-	  http://localhost:8000/student/update/1
+	- School ex (header -> api-token : 92b3dc9cda3545b89ff557b6b4af95fa2f3470c4)
+	  [GET] http://localhost:8000/school/1
+	  [POST] http://localhost:8000/school/save
+	  [GET] http://localhost:8000/school/delete/1
+	  [POST] http://localhost:8000/school/update/1
 
-	- Payment
-	  http://localhost:8000/student/create
-	  http://localhost:8000/student/pay/1
-	  http://localhost:8000/student/info/1
-	  http://localhost:8000/student/delete/1
+	- Student ex (header -> api-token : 92b3dc9cda3545b89ff557b6b4af95fa2f3470c4)
+	  [GET] http://localhost:8000/student/1
+	  [POST] http://localhost:8000/student/save
+	  [GET] http://localhost:8000/student/delete/1
+	  [POST] http://localhost:8000/student/update/1
+
+	- Payment ex (header -> api-token : 92b3dc9cda3545b89ff557b6b4af95fa2f3470c4)
+	  [GET] http://localhost:8000/payment
+	  [GET] http://localhost:8000/payment/1
+	  [GET] http://localhost:8000/payment/pay/1
+	  [GET] http://localhost:8000/payment/cancel/1
