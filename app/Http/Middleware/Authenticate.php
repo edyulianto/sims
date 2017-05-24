@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Contracts\Auth\Factory as Auth;
+use App\User;
 use Request;
 
 class Authenticate
@@ -37,15 +38,16 @@ class Authenticate
     public function handle($request, Closure $next, $guard = null)
     {
         if ($this->auth->guard($guard)->guest()) {
-            if($request->has('api_token')){
-                $token = Request::header('api_token');
+            $token = $request->header('api-token');
+            // dd($token);
+            if(isset($token)){                                
                 $check_token = User::where('api_token',$token)->first();
                 if($check_token==null){
                     return response(array('status'=>'warning','message'=>'login failed'));
-                }else{
-                    return response(array('status'=>'warning','message'=>'login success'));
                 }
-            }            
+            }else{
+                return response(array('status'=>'warning','message'=>'login failed'));
+            }
         }
         return $next($request);
     }

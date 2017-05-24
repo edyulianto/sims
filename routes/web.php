@@ -59,13 +59,9 @@ $app->group(['prefix' => 'school'], function($app)
 $app->group(['prefix' => 'payment'], function($app)
 {
 	$app->get('','PaymentController@index');
-
-	// $app->post('save','PaymentController@save');
-
+	
 	$app->get('/{id}','PaymentController@info');
 
 	$app->get('pay/{id}','PaymentController@pay');
- 	 
-	// $app->get('delete/{id}','PaymentController@delete');
 	
 });

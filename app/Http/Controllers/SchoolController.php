@@ -22,7 +22,7 @@ class SchoolController extends Controller
         if($school){
             return response()->json($this->notif(array('status'=>'success','data'=>$school)));
         }else{
-            return response()->json($this->notif(array('status'=>'failed','data')));
+            return response()->json($this->notif(array('status'=>'failed','data'=>'')));
         }
     }
 
