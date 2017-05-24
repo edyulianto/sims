@@ -22,4 +22,38 @@ The Lumen framework is open-sourced software licensed under the [MIT license](ht
 
 
 ## HOW TO INSTALL ##
-1. 
+1. Goto foler application from cmd
+   type command :
+   - php artisan migrate
+   - composer dump-autoload
+   - php artisan migrate:refresh --seed
+   - php -S localhost:8000 -t public
+3. Open Application Api for testing Rest API (ex Postman)
+4. Test REST API
+	- Login
+	  http://localhost:8000/login
+	  http://localhost:8000/logout	
+
+	- User
+	  http://localhost:8000/user/1
+	  http://localhost:8000/user/save
+	  http://localhost:8000/user/delete/1
+	  http://localhost:8000/user/update/1
+
+	- School
+	  http://localhost:8000/school/1
+	  http://localhost:8000/school/save
+	  http://localhost:8000/school/delete/1
+	  http://localhost:8000/school/update/1
+
+	- Student
+	  http://localhost:8000/student/1
+	  http://localhost:8000/student/save
+	  http://localhost:8000/student/delete/1
+	  http://localhost:8000/student/update/1
+
+	- Payment
+	  http://localhost:8000/student/create
+	  http://localhost:8000/student/pay/1
+	  http://localhost:8000/student/info/1
+	  http://localhost:8000/student/delete/1
