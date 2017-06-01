@@ -13,6 +13,9 @@ class AuthServiceProvider extends ServiceProvider
      *
      * @return void
      */
+
+    public $database = 'school_1';
+
     public function register()
     {
         //
@@ -32,8 +35,25 @@ class AuthServiceProvider extends ServiceProvider
 
         $this->app['auth']->viaRequest('api', function ($request) {
             $token = $request->header('api-token');
+            $nis = $request->input('nis');
+            
+            $config = app()->make('config');
+            $name = 'database.connections.'.$this->database;
+            $config->set($name, [
+                'driver'    => 'mysql',
+                'host'      => 'localhost',
+                'port'      => 3306,
+                'database'  => $this->database,
+                'username'  => 'root',
+                'password'  => 'root',
+                'charset'   => 'utf8',
+                'collation' => 'utf8_unicode_ci',
+                'prefix'    => '',
+                'timezone'  => '+00:00',
+                'strict'    => false,
+            ]);            
             if(isset($token)){
-                return User::where('api_token', $token)->first();
+                return app('db')->connection($this->database)->table('user')->where('api_token',$token)->first();
             }
         });
     }

@@ -4,19 +4,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Student;
 use App\School;
+use Illuminate\Support\Facades\DB;
 
 class StudentController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        
-    }
-
     public function index(Request $request){
         $student = Student::all();    
         if($student){
@@ -47,7 +38,7 @@ class StudentController extends Controller
     }
 
     public function get(Request $request,$id){
-    	$student = Student::with('school')->find($id);
+    	$student = DB::connection('dynamic')->table('user')->where('id',$id)->get();
         
         if($student){
             return response()->json($this->notif(array('status'=>'success','data'=>$student)));

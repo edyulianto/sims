@@ -7,16 +7,6 @@ use App\Payment;
 
 class PaymentController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        
-    }
-
     public function index(Request $request){
         $user = Payment::all();
         if($user){

@@ -7,16 +7,6 @@ use App\School;
 
 class SchoolController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        
-    }
-
     public function index(Request $request){
         $school = School::all();
         if($school){

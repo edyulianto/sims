@@ -11,12 +11,20 @@
 |
 */
 
+$app->routeMiddleware([
+    'DynamicDatabase' => App\Http\Middleware\DynamicDatabase::class,
+]);
+
 $app->get('/', function () use ($app) {
-    return $app->version();
+    return $app->version();       
 });
 
 
-$app->post('/login', 'LoginController@login');
+$app->group(['middleware' => 'DynamicDatabase','prefix' => 'login'], function($app)
+{
+	$app->post('', 'LoginController@login');
+});
+
 
 $app->group(['middleware' => 'auth','prefix' => 'user'], function($app)
 {

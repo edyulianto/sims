@@ -3,9 +3,26 @@
 namespace App\Http\Controllers;
 
 use Laravel\Lumen\Routing\Controller as BaseController;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
+use Illuminate\Routing\Route;
+use Illuminate\Support\Facades\Config;
 
 class Controller extends BaseController
 {
+
+    public $database;
+    
+    public function __construct(Request $request)  
+    {                        
+        if(is_null($this->database)){
+            $this->database = $request->input('db');
+            Config::set("database.connections.dynamic.database", $this->database );
+        }else{
+            dd(Config::get("database.connections.dynamic"));
+        }
+    }
+
     public function notif($data){
         $pesan;
     	switch ($data['status']) {

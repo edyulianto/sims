@@ -7,16 +7,7 @@ use App\User;
 
 class UserController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        
-    }
-
+    
     public function index(Request $request){
         $user = User::all();
         if($user){
@@ -47,7 +38,7 @@ class UserController extends Controller
     }
 
     public function get(Request $request,$id){
-    	$user = User::where('id',$id)->get();
+    	$user = $this->db->table('user')->where('id',$id)->get();
         if($user){
             return response()->json($this->notif(array('status'=>'success','data'=>$user)));
         }else{
