@@ -17,9 +17,9 @@ class Controller extends BaseController
     {                        
         if(is_null($this->database)){
             $this->database = $request->input('db');
-            Config::set("database.connections.dynamic.database", $this->database );
+            Config::set("database.connections.mysql.database", $this->database );
         }else{
-            dd(Config::get("database.connections.dynamic"));
+            dd(Config::get("database.connections.mysql"));
         }
     }
 

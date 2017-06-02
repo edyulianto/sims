@@ -38,7 +38,7 @@ class StudentController extends Controller
     }
 
     public function get(Request $request,$id){
-    	$student = DB::connection('dynamic')->table('user')->where('id',$id)->get();
+    	$student = Student::where('id',$id)->get();
         
         if($student){
             return response()->json($this->notif(array('status'=>'success','data'=>$student)));

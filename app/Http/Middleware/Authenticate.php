@@ -43,7 +43,7 @@ class Authenticate extends DynamicDatabase
     public function handle($request, Closure $next, $guard = null)
     {
         if(is_null($request->input('nis')) || $request->input('nis') == '') 
-            return response(array('status'=>'Warning','message'=>'login failed'));
+            return response(array('status'=>'Warning','message'=>'login failed1'));
         $database = $this->databaseName($request->input('nis'));
 
         if(!is_null($database)){
@@ -51,17 +51,17 @@ class Authenticate extends DynamicDatabase
                 $token = $request->header('api-token');
 
                 if(isset($token)){
-                    Config::set("database.connections.dynamic.database", $database);
-                    $check_token = DB::connection('dynamic')->table('user')->where('api_token',$token)->first();
+                    Config::set("database.connections.mysql.database", $database);
+                    $check_token = User::where('api_token',$token)->first();
                     if($check_token==null){
-                        return response(array('status'=>'Warning','message'=>'login failed'));
+                        return response(array('status'=>'Warning','message'=>'login failed2'));
                     }
                 }else{
-                    return response(array('status'=>'Warning','message'=>'login failed'));
+                    return response(array('status'=>'Warning','message'=>'login failed3'));
                 }
             }        
         }else{
-            return response(array('status'=>'Warning','message'=>'login failed'));
+            return response(array('status'=>'Warning','message'=>'login failed4'));
         }
         return $next($request->merge(['db'=>$database]));
     }
