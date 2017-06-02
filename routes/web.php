@@ -63,5 +63,7 @@ $app->group(['middleware' => 'auth','prefix' => 'payment'], function($app)
 	$app->get('/{id}','PaymentController@info');
 
 	$app->get('pay/{id}','PaymentController@pay');
+
+	$app->get('cancel/{id}','PaymentController@delete');
 	
 });
